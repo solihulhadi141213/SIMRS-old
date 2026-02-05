@@ -48,8 +48,16 @@
     // ==============================
     $limit       = isset($_POST['limit']) ? (int) $_POST['limit'] : 10;
     $page        = isset($_POST['page']) ? (int) $_POST['page'] : 1;
-    $short_by    = $_POST['short_by'] ?? 'id_rad';
-    $order_by    = strtoupper($_POST['order_by'] ?? 'ASC');
+    if(empty($_POST['order_by'])){
+        $order_by = "DESC";
+    }else{
+        $order_by = $_POST['order_by'];
+    }
+    if(empty($_POST['short_by'])){
+        $short_by = "id_rad";
+    }else{
+        $short_by = $_POST['short_by'];
+    }
     $keyword_by  = $_POST['keyword_by'] ?? '';
     $keyword     = $_POST['keyword'] ?? '';
 
